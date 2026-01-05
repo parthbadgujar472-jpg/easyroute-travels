@@ -306,8 +306,6 @@
 <!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
-
 <script>
     const firebaseConfig = {
         apiKey: "AIzaSyC8re6JjhoITcwfyx2ZAJB7dMmBqUjU8Hw",
@@ -355,21 +353,28 @@
         return false;
     }
 
-    database.ref("hotelBookings").push(hotelData);
+   database.ref("hotelBookings").push(hotelData)
+.then(() => {
 
-   sessionStorage.setItem("hotelSubmitted", "true");
+    sessionStorage.setItem("hotelSubmitted", "true");
 
-alert("Hotel booking saved successfully!");
+    alert("Hotel booking saved successfully!");
 
-if (!sessionStorage.getItem("flightSubmitted")) {
-    if (confirm("Do you want to book a flight also?")) {
-        alert("Please fill flight details.");
+    if (!sessionStorage.getItem("flightSubmitted")) {
+        if (confirm("Do you want to book a flight also?")) {
+            alert("Please fill flight details.");
+        } else {
+            window.location.href = "thankyou.html";
+        }
     } else {
         window.location.href = "thankyou.html";
     }
-} else {
-    window.location.href = "thankyou.html";
-}
+
+})
+.catch((error) => {
+    alert("Firebase error: " + error.message);
+});
+
 
 
     return false;
@@ -395,24 +400,28 @@ function validateFlight() {
         return false;
     }
 
-    database.ref("flightBookings").push(flightData);
+   database.ref("flightBookings").push(flightData)
+.then(() => {
 
     sessionStorage.setItem("flightSubmitted", "true");
 
-alert("Flight booking saved successfully!");
+    alert("Flight booking saved successfully!");
 
-if (!sessionStorage.getItem("hotelSubmitted")) {
-    if (confirm("Do you want to book a hotel also?")) {
-        alert("Please fill hotel details.");
+    if (!sessionStorage.getItem("hotelSubmitted")) {
+        if (confirm("Do you want to book a hotel also?")) {
+            alert("Please fill hotel details.");
+        } else {
+            window.location.href = "thankyou.html";
+        }
     } else {
         window.location.href = "thankyou.html";
     }
-} else {
-    window.location.href = "thankyou.html";
-}
 
-
-    return false;
+})
+.catch((error) => {
+    alert("Firebase error: " + error.message);
+});
+ return false;
 }
  const params = new URLSearchParams(window.location.search);
 
@@ -430,4 +439,5 @@ if (params.get("flight")) {
 </body>
 
 </html>
+
 
