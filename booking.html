@@ -312,7 +312,7 @@
     const firebaseConfig = {
         apiKey: "AIzaSyC8re6JjhoITcwfyx2ZAJB7dMmBqUjU8Hw",
         authDomain: "easyroutetravels.firebaseapp.com",
-        databaseURL: "https://easyroutetravels-default-rtdb.firebaseio.com",
+        databaseURL: "https://easyroutetravels-default-rtdb.firebaseio.com/",
         projectId: "easyroutetravels",
         storageBucket: "easyroutetravels.firebasestorage.app",
         messagingSenderId: "1034016707972",
@@ -357,13 +357,20 @@
 
     database.ref("hotelBookings").push(hotelData);
 
-    alert("Hotel booking saved successfully!");
+   sessionStorage.setItem("hotelSubmitted", "true");
 
+alert("Hotel booking saved successfully!");
+
+if (!sessionStorage.getItem("flightSubmitted")) {
     if (confirm("Do you want to book a flight also?")) {
         alert("Please fill flight details.");
     } else {
         window.location.href = "thankyou.html";
     }
+} else {
+    window.location.href = "thankyou.html";
+}
+
 
     return false;
 }
@@ -390,13 +397,20 @@ function validateFlight() {
 
     database.ref("flightBookings").push(flightData);
 
-    alert("Flight booking saved successfully!");
+    sessionStorage.setItem("flightSubmitted", "true");
 
+alert("Flight booking saved successfully!");
+
+if (!sessionStorage.getItem("hotelSubmitted")) {
     if (confirm("Do you want to book a hotel also?")) {
         alert("Please fill hotel details.");
     } else {
         window.location.href = "thankyou.html";
     }
+} else {
+    window.location.href = "thankyou.html";
+}
+
 
     return false;
 }
@@ -416,3 +430,4 @@ if (params.get("flight")) {
 </body>
 
 </html>
+
