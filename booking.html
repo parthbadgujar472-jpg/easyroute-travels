@@ -435,10 +435,55 @@ if (params.get("flight")) {
         params.get("flight");
 }
 </script>
+<div onclick="openChat()" style="
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#0066cc;
+    color:white;
+    padding:10px 15px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:20px;
+">
+💬
+</div>
 
+<script>
+function openChat() {
+    let question = prompt(
+        "Hi! Ask me:\n" +
+        "1. Booking\n" +
+        "2. Packages\n" +
+        "3. Contact\n" +
+        "4. Office Hours"
+    );
+
+    if (question === null) return;
+
+    question = question.toLowerCase();
+
+    if (question.includes("booking")) {
+        alert("You can book hotels and flights from the Booking page.");
+    } 
+    else if (question.includes("package")) {
+        alert("We offer domestic and international travel packages.");
+    } 
+    else if (question.includes("contact")) {
+        alert("Email: support@easyroute.com\nPhone: +91 8975945772");
+    } 
+    else if (question.includes("time") || question.includes("hour")) {
+        alert("Office hours: Monday to Saturday, 10 AM to 7 PM.");
+    } 
+    else {
+        alert("Sorry, I can help only with booking, packages, contact, and office hours.");
+    }
+}
+</script>
 </body>
 
 </html>
+
 
 
 
