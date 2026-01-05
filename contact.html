@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EasyRoute Travels | Contact</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, #cce7ff, #e6f3ff);
+            color: #333;
+            background-image: url(images/mountains.jpg);
+        }
+
+        h1 {
+            color: #0066cc;
+            letter-spacing: 1px;
+             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+             font-size: 40px
+
+        }
+
+        h2 {
+            color: #004080;
+            border-bottom: 2px solid #99ccff;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+
+        }
+
+        a {
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        a:hover {
+            color: #003366;
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: #99ccff;
+            margin: 20px 0;
+        }
+
+        
+        .contact-box {
+            background: white;
+            width: 70%;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #0066cc;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+<center>
+    <h1>Contact Us </h1>
+    <p>We Are Happy to Help You</p>
+</center>
+
+<hr>
+
+<center>
+    <a href="index.html">Home</a> |
+    <a href="packages.html">Packages</a> |
+    <a href="services.html">Services</a> |
+    <a href="contact.html">Contact</a> |
+    <a href="#" onclick="checkLoginForBooking(); return false;">Booking</a>
+</center>
+
+<hr>
+
+<div class="contact-box">
+    <h2> Contact Information📞</h2>
+    <p><strong>Email:</strong> support@easyroute.com</p>
+    <p><strong>Phone:</strong> +91 8975945772</p>
+    <p><strong>Mobile No:</strong>+91 9325110848</p>
+    <p><strong> Secondary Mobile No:</strong>+91 9373879522</p>
+</div>
+
+<div class="contact-box">
+    <h2> Office Hours</h2>
+    <img src="images/googlemap.svg" width="200" alt="">
+    <p>Monday to Saturday: 10 AM-7 PM</p>
+    <p>Sunday: Closed</p>
+</div>
+
+<div class="contact-box">
+    <h2> Website Ownership</h2>
+    <p>Website Owned and Managed By:</p>
+    <p>
+        Saksham Badgujar<br>
+        Parth Badgujar<br>
+        Avani Kanago
+    </p>
+</div>
+<script>
+function checkLoginForBooking() {
+  if (sessionStorage.getItem('userRole') !== 'customer' &&
+    sessionStorage.getItem('userRole') !== 'admin') {
+    alert('Please login first');
+    window.location.href = 'login.html';
+}
+}
+</script>
+<footer>
+    <p>© 2025 EasyRoute Travels. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

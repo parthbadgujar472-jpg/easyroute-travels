@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EasyRoute Travels | Booking</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, #cce7ff, #e6f3ff);
+            color: #333;
+            background-image: url(images/mountains.jpg);
+        }
+        h1 {
+            color: #0066cc;
+            letter-spacing: 1px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        
+        .hotel-section{
+            padding:40px 60px;
+            background:rgba(255,255,255,0.95);
+            margin:40px;
+            border-radius:15px;
+            box-shadow:0 6px 15px rgba(0,0,0,0.15);
+        }
+        .hotel-section h2{
+            text-align:center;
+            color:#004c99;
+            margin-bottom:30px;
+        }
+        .hotel-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:25px;
+        }
+        .hotel-card{
+            background:white;
+            border-radius:15px;
+            overflow:hidden;
+            transition:0.3s;
+            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+        }
+        .hotel-card:hover{
+            transform:translateY(-8px);
+        }
+        .hotel-card img{
+            width:100%;
+            height:180px;
+            object-fit:cover;
+        }
+        .hotel-info{
+            padding:15px;
+        }
+        .hotel-info h3{
+            margin:0;
+            color:#0066cc;
+        }
+        .hotel-info p{
+            font-size:14px;
+            margin:8px 0;
+        }
+        .price{
+            font-weight:bold;
+            color:#008000;
+            margin:10px 0;
+        }
+        .book-btn{
+            display:inline-block;
+            padding:8px 16px;
+            background:#0066cc;
+            color:white;
+            text-decoration:none;
+            border-radius:20px;
+            font-size:14px;
+        }
+        .book-btn:hover{
+            background:#004c99;
+        }
+    </style>
+</head>
+<body>
+
+
+<section class="hotel-section">
+    <h2><i>Recommended Hotels for Your Journey🏨🏨🏨</i></h2>
+    <div class="hotel-grid">
+        <div class="hotel-card">
+            <img src="images/oceanbreeze.webp" alt="Beach Resort">
+            <div class="hotel-info">
+                <h3>Ocean Breeze Resort</h3>
+                <p>Relax with stunning sea views and premium comfort.</p>
+                <div class="price">From ₹4,999 / night</div>
+                <a href="#" class="book-btn">Book Hotel</a>
+            </div>
+        </div>
+
+        <div class="hotel-card">
+            <img src="images/mimage.jpg" alt="Mountain Lodge">
+            <div class="hotel-info">
+                <h3>Highland Mountain Lodge</h3>
+                <p>Peaceful stay surrounded by scenic mountains.</p>
+                <div class="price">From ₹3,499 / night</div>
+                <a href="#" class="book-btn">Book Hotel</a>
+            </div>
+        </div>
+
+        <div class="hotel-card">
+            <img src="images/citylight.webp" alt="City Hotel">
+            <div class="hotel-info">
+                <h3>CityLights Premium Hotel</h3>
+                <p>Modern rooms in the heart of the city.</p>
+                <div class="price">From ₹5,499 / night</div>
+                <a href="#" class="book-btn">Book Hotel</a>
+            </div>
+        </div>
+
+        <div class="hotel-card">
+            <img src="images/worldclass.jpg" alt="Luxury Stay">
+            <div class="hotel-info">
+                <h3>Palm Grove Luxury Stay</h3>
+                <p>Elegant rooms with world-class amenities.</p>
+                <div class="price">From ₹6,999 / night</div>
+                <a href="#" class="book-btn">Book Hotel</a>
+            </div>
+        </div>
+    <div class="hotel-card">
+            <img src="images/royalheritage.webp">
+            <div class="hotel-info">
+                <h3>Royal Heritage Inn</h3>
+                <p>Jaipur • Heritage</p>
+                <p>Traditional royal experience</p>
+                <div class="price">₹4,200 / night</div>
+                <a href="#" class="book-btn">Book Hotel</a>
+            </div>
+        </div>
+
+        <! Hotel 6 >
+        <div class="hotel-card">
+            <img src="images/lakeview.jpg">
+            <div class="hotel-info">
+                <h3>LakeView Residency</h3>
+                <p>Udaipur • Lake View</p>
+                <p>Romantic lakeside stay</p>
+                <div class="price">₹5,800 / night</div>
+                <a href="#" class="book-btn">Book Hotel</a>
+            </div>
+        </div>
+
+        <! Hotel 7 >
+        <div class="hotel-card">
+            <img src="images/greenvalley.webp">
+            <div class="hotel-info">
+                <h3>Green Valley Retreat</h3>
+                <p>Coorg • Nature</p>
+                <p>Eco-friendly forest stay</p>
+                <div class="price">₹3,750 / night</div>
+                <a href="#" class="book-btn">Book Hotel</a>
+            </div>
+        </div>
+
+        <! Hotel 8 >
+        <div class="hotel-card">
+            <img src="images/urbancomfort.jpg">
+            <div class="hotel-info">
+                <h3>Urban Comfort Suites</h3>
+                <p>Bangalore • IT Hub</p>
+                <p>Perfect for business travel</p>
+                <div class="price">₹4,600 / night</div>
+                <a href="#" class="book-btn">Book Hotel</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script>
+document.querySelectorAll(".hotel-card .book-btn").forEach(btn => {
+    btn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const hotelName =
+            this.closest(".hotel-card")
+                .querySelector("h3")
+                .innerText;
+
+        window.location.href =
+            "booking.html?hotel=" + encodeURIComponent(hotelName);
+    });
+});
+</script>
+
+</body>
+</html>

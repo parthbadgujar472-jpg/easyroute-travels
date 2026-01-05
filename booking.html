@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EasyRoute Travels | Booking</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, #cce7ff, #e6f3ff);
+            color: #333;
+            background-image: url(images/mountains.jpg);
+        }
+        h1 {
+            color: #0066cc;
+            letter-spacing: 1px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 40px;
+        }
+        h2 {
+            color: #004080;
+            border-bottom: 2px solid #99ccff;
+            padding-bottom: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-style: oblique;
+            font-weight: bolder;
+        }
+        p {
+            font-size: 18px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        a {
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        a:hover {
+            color: #003366;
+            text-decoration: underline;
+        }
+        form {
+            background: white;
+            width: 100%;
+            padding: 20px;
+            margin: 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .booking-wrapper{
+            display:flex;
+            justify-content:center;
+            margin-top:60px;
+            margin-bottom:60px;
+        }
+        .form-container{
+            display:flex;
+            gap:100px;
+            max-width:1300px;
+            width:100%;
+            justify-content:center;
+            align-items: stretch; /* Added to make boxes equal height */
+        }
+
+        .form-box{
+            width:35%;
+            display:flex;
+            flex-direction:column;
+            align-items:stretch;
+        }
+        .form-box h2{
+            background:white;
+            color:#003366;
+            text-align:center;
+            padding:5px;
+            border-radius:10px;
+            margin-bottom:20px;
+        }
+        .form-box form{
+            padding:30px;
+            flex-grow: 1; /* Added to make form fill the box height */
+        }
+        .form-box p{
+            margin-top:18px;
+            margin-bottom:6px;
+        }
+        .form-box input{
+            margin-bottom:18px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #3399ff;
+            box-shadow: 0 0 5px rgba(51,153,255,0.5);
+        }
+
+        input[type="submit"] {
+            background: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        input[type="submit"]:hover {
+            background: #004080;
+            transform: scale(1.05);
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #0066cc;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<center>
+    <h1>Booking Page !!!</h1>
+    <p>Submit your travel details and travel with us!</p>
+</center>
+
+<hr>
+
+<center>
+    <a href="index.html">Home</a> |
+    <a href="packages.html">Packages</a> |
+    <a href="services.html">Services</a> |
+    <a href="contact.html">Contact</a> |
+    <a href="booking.html">Booking</a> 
+</center>
+<hr>
+
+<center>
+  <a href="hotel.html">View Hotels 🏨</a> |
+  <a href="flight.html">View Flights ✈️</a>
+</center>
+
+<p style="text-align:center; font-size:14px; color:#555;">
+  👆 Start here: Browse hotels or flights before filling the form
+</p>
+
+<div class="booking-wrapper">
+    <div class="form-container">
+
+        <div class="form-box">
+            <p style="text-align:center; font-size:18px; color:#000000;">
+            Haven’t selected a hotel yet? <a href="hotel.html" style="color:#490202;">View hotels</a>
+            </p>
+
+            <h2 style="text-align:center;">Hotel Booking</h2>
+            <form onsubmit="return validateHotel()">
+                <p>Name:</p>
+                <input type="text" id="Hname" placeholder="Enter name">
+
+                <p>City:</p>
+                <input type="text" id="Hcity" placeholder="City">
+
+                <p>Check-in Date:</p>
+                <input type="date" id="Hin">
+
+                <p>Check-out Date:</p>
+                <input type="date" id="Hout">
+
+                <p>Guests:</p>
+                <input type="number" id="Hguests" min="1" placeholder="Number of guests">
+                <p>Selected Hotel:</p>
+                <input type="text" id="selectedHotel" readonly>
+                <small style="color:#888;">
+                Tip: Select a hotel from the hotel list to auto-fill this field
+                </small>
+
+                <p>Hotel Star Rating:</p>
+                <select id="Hstars">
+                    <option value="">Select Rating</option>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+
+                <p>Amenities:</p>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" id="wifi"> WiFi</label>
+                    <label><input type="checkbox" id="pool"> Swimming Pool</label>
+                    <label><input type="checkbox" id="gym"> Gym</label>
+                    <label><input type="checkbox" id="spa"> Spa</label>
+                    <label><input type="checkbox" id="breakfast"> Breakfast Included</label>
+                    <label><input type="checkbox" id="parking"> Free Parking</label>
+                    <label><input type="checkbox" id="restaurant"> On-site Restaurant</label>
+                    <label><input type="checkbox" id="pets"> Pet-Friendly</label>
+                </div>
+
+                <p>Room Type:</p>
+                <select id="Hroom">
+                    <option value="">Select Room Type</option>
+                    <option value="standard">Standard</option>
+                    <option value="deluxe">Deluxe</option>
+                    <option value="suite">Suite</option>
+                    <option value="presidential">Presidential Suite</option>
+                </select>
+
+                <br>
+                <input type="submit" value="Submit Hotel Request">
+            </form>
+        </div>
+
+        <div class="form-box">
+            <p style="text-align:center; font-size:18px; color:#000000;">
+            Want to choose flights first? <a href="flight.html" style="color:#490202;">View flights</a>
+            </p>
+   
+            <h2 style="text-align:center;">Flight Booking</h2>
+            <form onsubmit="return validateFlight()">
+                <p>Name:</p>
+                <input type="text" id="Fname" placeholder="Enter name">
+
+                <p>From:</p>
+                <input type="text" id="from" placeholder="Departure">
+
+                <p>To:</p>
+                <input type="text" id="to" placeholder="To">
+
+                <p>Departure Date:</p>
+                <input type="date" id="Fdate">
+
+                <p>Return Date:</p>
+                <input type="date" id="date">
+              
+               <p>Selected Flight:</p>
+               <input type="text" id="selectedFlight" readonly>
+                <small style="color:#888;">
+                Tip: Select a flight from the flight list to auto-fill this field
+                </small>
+
+               <p>Class:</p>
+                <select id="Fclass">
+                    <option value="">Select Class</option>
+                    <option value="economy">Economy</option>
+                    <option value="premium-economy">Premium Economy</option>
+                    <option value="business">Business</option>
+                    <option value="first">First Class</option>
+                </select>
+
+                <p>Passengers:</p>
+                <input type="number" id="Fpassengers" min="1" placeholder="Number of passengers">
+
+                <p>Meal Preference:</p>
+                <select id="Fmeal">
+                    <option value="">Select Meal</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="non-vegetarian">Non-Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="halal">Halal</option>
+                    <option value="kosher">Kosher</option>
+                </select>
+
+                <p>Special Requests:</p>
+                <input type="text" id="Frequests" placeholder="e.g., Wheelchair assistance, Extra legroom">
+
+                <br>
+                <input type="submit" value="Submit Flight Request">
+            </form>
+        </div>
+
+    </div>
+</div>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyC8re6JjhoITcwfyx2ZAJB7dMmBqUjU8Hw",
+        authDomain: "easyroutetravels.firebaseapp.com",
+        databaseURL: "https://easyroutetravels-default-rtdb.firebaseio.com",
+        projectId: "easyroutetravels",
+        storageBucket: "easyroutetravels.firebasestorage.app",
+        messagingSenderId: "1034016707972",
+        appId: "1:1034016707972:web:61f8965d034d248cb8f9d1"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    const database = firebase.database(); 
+
+    if (sessionStorage.getItem('userRole') !== 'customer' &&   
+        sessionStorage.getItem('userRole') !== 'admin') {      
+        alert('Please login first');
+        window.location.href = 'login.html';
+    }
+    
+    function validateHotel() {
+
+    var hotelData = {
+        name: document.getElementById("Hname").value,
+        city: document.getElementById("Hcity").value,
+        checkIn: document.getElementById("Hin").value,
+        checkOut: document.getElementById("Hout").value,
+        guests: document.getElementById("Hguests").value,
+        stars: document.getElementById("Hstars").value,
+        room: document.getElementById("Hroom").value,
+        wifi: document.getElementById("wifi").checked,
+        pool: document.getElementById("pool").checked,
+        gym: document.getElementById("gym").checked,
+        spa: document.getElementById("spa").checked,
+        breakfast: document.getElementById("breakfast").checked,
+        parking: document.getElementById("parking").checked,
+        restaurant: document.getElementById("restaurant").checked,
+        pets: document.getElementById("pets").checked
+    };
+
+    if (hotelData.name === "" || hotelData.city === "" ||
+        hotelData.stars === "" || hotelData.room === "") {
+        alert("Please fill all required hotel fields");
+        return false;
+    }
+
+    database.ref("hotelBookings").push(hotelData);
+
+    alert("Hotel booking saved successfully!");
+
+    if (confirm("Do you want to book a flight also?")) {
+        alert("Please fill flight details.");
+    } else {
+        window.location.href = "thankyou.html";
+    }
+
+    return false;
+}
+
+function validateFlight() {
+
+    var flightData = {
+        name: document.getElementById("Fname").value,
+        from: document.getElementById("from").value,
+        to: document.getElementById("to").value,
+        departDate: document.getElementById("Fdate").value,
+        returnDate: document.getElementById("date").value,
+        class: document.getElementById("Fclass").value,
+        passengers: document.getElementById("Fpassengers").value,
+        meal: document.getElementById("Fmeal").value,
+        requests: document.getElementById("Frequests").value
+    };
+
+    if (flightData.name === "" || flightData.from === "" ||
+        flightData.to === "" || flightData.class === "") {
+        alert("Please fill all required flight fields");
+        return false;
+    }
+
+    database.ref("flightBookings").push(flightData);
+
+    alert("Flight booking saved successfully!");
+
+    if (confirm("Do you want to book a hotel also?")) {
+        alert("Please fill hotel details.");
+    } else {
+        window.location.href = "thankyou.html";
+    }
+
+    return false;
+}
+ const params = new URLSearchParams(window.location.search);
+
+if (params.get("hotel")) {
+    document.getElementById("selectedHotel").value =
+        params.get("hotel");
+}
+
+if (params.get("flight")) {
+    document.getElementById("selectedFlight").value =
+        params.get("flight");
+}
+</script>
+
+</body>
+</html>
