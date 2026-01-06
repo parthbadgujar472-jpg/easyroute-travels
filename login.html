@@ -134,6 +134,7 @@
 
         <div class="extra">
             <label><input type="checkbox" onclick="togglePassword()"> Show Password</label>
+            <span onclick="forgotPassword()" style="cursor:pointer; text-decoration:underline;">Forgot Password?</span>
         </div>
 
         <button type="submit">Continue</button>
@@ -164,6 +165,22 @@ function toggleOptions() {
 function togglePassword() {
     const pass = document.getElementById("password");
     pass.type = pass.type === "password" ? "text" : "password";
+}
+function forgotPassword() {
+    const email = document.getElementById("email").value.trim();
+
+    if (!email) {
+        alert("Please enter your email address first.");
+        return;
+    }
+
+    auth.sendPasswordResetEmail(email)
+        .then(() => {
+            alert("Password reset email sent! Please check your inbox.");
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
 }
 
 function handleLogin(event) {
